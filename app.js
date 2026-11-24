@@ -2,6 +2,23 @@
   'use strict';
   const content = window.LEADVLA_CONTENT;
   const playButtons = new Map();
+  const copyBibtex = document.querySelector('#copy-bibtex');
+  const bibtex = document.querySelector('#bibtex-entry code');
+  if (copyBibtex && bibtex && navigator.clipboard?.writeText) {
+    const copyLabel = copyBibtex.querySelector('span');
+    let resetCopyLabel;
+    copyBibtex.hidden = false;
+    copyBibtex.addEventListener('click', async () => {
+      clearTimeout(resetCopyLabel);
+      try {
+        await navigator.clipboard.writeText(bibtex.textContent.trim());
+        copyLabel.textContent = 'Copied!';
+      } catch {
+        copyLabel.textContent = 'Copy failed';
+      }
+      resetCopyLabel = setTimeout(() => { copyLabel.textContent = 'Copy BibTeX'; }, 2500);
+    });
+  }
   const videoIcon = '<svg viewBox="0 0 48 48" fill="none" aria-hidden="true"><rect x="5" y="10" width="28" height="28" rx="6" stroke="currentColor" stroke-width="1.5"/><path d="m33 20 10-6v20l-10-6M16 18l10 6-10 6Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>';
 
   function publicAsset(path, version) {

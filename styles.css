@@ -275,6 +275,8 @@ thead th { font-size: 14px; }
 .citation-section { scroll-margin-top: 85px; }
 .citation-section .section-heading { margin-bottom: 22px; }
 .citation-box { padding: 25px 28px; border: 1px solid var(--line); border-radius: 12px; background: var(--tint); }
+.citation-actions { display: flex; justify-content: flex-end; }
+.citation-copy { min-width: 110px; margin-bottom: 12px; background: #fff; font-size: 14px; }
 .citation-box pre { margin: 0; overflow-x: auto; font-size: 15px; line-height: 1.7; text-align: left; }
 @media (max-width: 700px) {
   .hero #paper-title { font-size: 30px; letter-spacing: -.7px; line-height: 1.25; }
